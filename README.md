@@ -4,8 +4,8 @@ Author: Adam Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CU
 Purpose: After numerous jobs, no billing servers and manually looking up cdr requests
 for 4+ years I've decided to put together a python script for my very first python
 project.
-C
-urrent Functionality: Manually download CDRs for now. Run the script from powershell.
+
+Current Functionality: Manually download CDRs for now. Run the script from powershell.
 Example below. Script will convert POSIX Timestamps into a Human Readable format. All
 IP addresses will be converted as well. Search for any dialed number to pull each 
 row that matches.
