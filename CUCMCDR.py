@@ -6,21 +6,22 @@ from os.path import exists
 
 """
 CUCMCDR.py
-Author: Adam Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMCDR
+Author: A.Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMCDR
 
-Purpose: After numerous jobs, no billing servers and manually looking up cdr requests
-for 4+ years I've decided to put together a python script for my very first python
-project.
+Purpose: After numerous jobs, no billing servers and manually looking up cdr
+requestsfor 4+ years I've decided to put together a python script for my very
+first python project.
 
-Current Functionality: Manually download CDRs for now. Run the script from powershell.
-Example below. Script will convert POSIX Timestamps into a Human Readable format. All
-IP addresses will be converted as well. Search for any dialed number to pull each
-row that matches.
+Current Functionality: Manually download CDRs for now. Run the script from
+powershell. Example below. Script will convert POSIX Timestamps into a Human
+Readable format. All IP addresses will be converted as well. Search for any
+dialed number to pull each row that matches.
 
-Future: I would like to build a proper billing server, with a web front end to allow
-granular searches. Instead of parsing CSVs a mySQL db. This is all as I learn so
-the more experienced python users will find this code raw and unsophisticated but I am
-open to any critism to make this project legitamite for all to use.
+Future: I would like to build a proper billing server, with a web front end to
+allow granular searches. Instead of parsing CSVs a mySQL db. This is all as I
+learn so the more experienced python users will find this code raw and
+unsophisticated but I am open to any critism to make this project legitamite
+for all to use.
 
 Thanks to Jay Swan at http://unroutable.blogspot.com for the example that helped
 me crack the signed 32-bit integer problem with hex().
