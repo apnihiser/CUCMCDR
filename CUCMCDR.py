@@ -3,6 +3,7 @@ import datetime
 import os, sys
 from os.path import exists
 
+
 """
 CUCMCDR.py
 Author: Adam Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMCDR
@@ -19,7 +20,7 @@ row that matches.
 Future: I would like to build a proper billing server, with a web front end to allow
 granular searches. Instead of parsing CSVs a mySQL db. This is all as I learn so
 the more experienced python users will find this code raw and unsophisticated but I am
-open to any critism to make this project legitimate for all to use.
+open to any critism to make this project legitamite for all to use.
 
 Thanks to Jay Swan at http://unroutable.blogspot.com for the example that helped
 me crack the signed 32-bit integer problem with hex().
@@ -36,59 +37,39 @@ python CUCMCDR.py 'C:\CDR.txt' 'C:\911output.csv' 911
 
 """
 
-def main():
-    csvFilesRe()
 
-def csvFilesRe():
+def conversion(working_csv):
 
-    with open(sys.argv[1], 'rt', newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',')
-        csvHeader = next(spamreader)
-        csvlist = list(spamreader)
-        CPNdnis(csvlist, csvHeader)
+    for row in working_csv:
+        if row[30] == sys.argv[3]:      #Search for user provided called number.
 
+            row[4] = datetime.datetime.utcfromtimestamp(      #Timestamp Convert
+                int(row[4])).strftime('%Y-%m-%d %H:%M:%S')
 
-def CPNdnis(csvlist, csvHeader):
+            list_of_dec = [                     #Submit the csv columns which
+                           int(row[7]),         #contain IPs needing converted
+                           int(row[13]),
+                           int(row[21]),
+                           int(row[28]),
+                           int(row[35]),
+                           int(row[43])
+                           ]
 
-    for dn in csvlist:
-        if dn[30] == sys.argv[3]:
-            timeConvert(dn, csvHeader)
+            x_list = [convert_ips(dec) for dec in list_of_dec]
 
+            [
+            row[7],             #create x_list and assign those values to
+            row[13],            #the working CSV file
+            row[21],
+            row[28],
+            row[35],
+            row[43]
+            ] = x_list
 
-def timeConvert(theFile, csvHeader):
-
-    theFile[4] = datetime.datetime.utcfromtimestamp(
-            int(theFile[4])).strftime('%Y-%m-%d %H:%M:%S')
-
-    ip_origin_dec(theFile, csvHeader)
-
-
-def ip_origin_dec(theFile, csvHeader):
-
-    list_of_dec = [
-                    int(theFile[7]),
-                    int(theFile[13]),
-                    int(theFile[21]),
-                    int(theFile[28]),
-                    int(theFile[35]),
-                    int(theFile[43])
-                    ]
-
-    converted_list = [convert_cdr_hex_ip(dec) for dec in list_of_dec]
-
-    [
-    theFile[7],
-    theFile[13],
-    theFile[21],
-    theFile[28],
-    theFile[35],
-    theFile[43]
-    ] = converted_list
-
-    csvFileWr(theFile, csvHeader)
+            final_copy(row)
 
 
-def convert_cdr_hex_ip(signed32BitInt):
+def convert_ips(signed32BitInt):
 
     if signed32BitInt == 0:
         return "CDR returned 0 as IP"
@@ -103,17 +84,24 @@ def convert_cdr_hex_ip(signed32BitInt):
     return '.'.join([str(int(n,16)) for n in hexSwap])
 
 
-def csvFileWr(output, csvHeader):
+def final_copy(final_csv):
 
     if not exists(sys.argv[2]):
         with open(sys.argv[2], 'a', newline='') as csvFinal:
             writer = csv.writer(csvFinal)
             writer.writerow(csvHeader)
-            writer.writerow(output)
+            writer.writerow(final_csv)
     else:
         with open(sys.argv[2], 'a', newline='') as csvFinal:
             writer = csv.writer(csvFinal)
-            writer.writerow(output)
+            writer.writerow(final_csv)
+
 
 if __name__ == '__main__':
-    main()
+
+    with open(sys.argv[1], 'rt', newline='') as csvfile:    #open raw csv.
+        reader = csv.reader(csvfile, delimiter=',')
+        csvHeader = next(reader)
+        unfilterdcsv = list(reader)
+
+        conversion(unfilterdcsv)
