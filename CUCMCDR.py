@@ -19,7 +19,7 @@ row that matches.
 Future: I would like to build a proper billing server, with a web front end to allow
 granular searches. Instead of parsing CSVs a mySQL db. This is all as I learn so
 the more experienced python users will find this code raw and unsophisticated but I am
-open to any critism to make this project legitamite for all to use.
+open to any critism to make this project legitimate for all to use.
 
 Thanks to Jay Swan at http://unroutable.blogspot.com for the example that helped
 me crack the signed 32-bit integer problem with hex().
