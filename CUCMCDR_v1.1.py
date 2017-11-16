@@ -108,13 +108,13 @@ def csvFileWr(output, csvHeader):
 
     if not exists(sys.argv[2]):
         with open(sys.argv[2], 'a', newline='') as csvFinal:
-            spamwriter = csv.writer(csvFinal)
-            spamwriter.writerow(csvHeader)
-            spamwriter.writerow(output)
+            writer = csv.writer(csvFinal)
+            writer.writerow(csvHeader)
+            writer.writerow(output)
     else:
         with open(sys.argv[2], 'a', newline='') as csvFinal:
-            spamwriter = csv.writer(csvFinal)
-            spamwriter.writerow(output)
+            writer = csv.writer(csvFinal)
+            writer.writerow(output)
 
 if __name__ == '__main__':
     main()
