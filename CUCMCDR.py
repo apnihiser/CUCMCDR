@@ -2,7 +2,6 @@ import csv
 import datetime
 import os, sys
 from os.path import exists
-from stat import *
 
 """
 CUCMCDR.py
