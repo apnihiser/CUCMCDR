@@ -39,37 +39,6 @@ python CUCMCDR.py 'C:\CDR.txt' 'C:\911output.csv' 911
 """
 
 
-def conversion(working_csv):
-
-    for row in working_csv:
-        if row[30] == sys.argv[3]:      #Search for user provided called number.
-
-            row[4] = datetime.datetime.utcfromtimestamp(      #Timestamp Convert
-                int(row[4])).strftime('%Y-%m-%d %H:%M:%S')
-
-            list_of_dec = [                     #Submit the csv columns which
-                           int(row[7]),         #contain IPs needing converted
-                           int(row[13]),
-                           int(row[21]),
-                           int(row[28]),
-                           int(row[35]),
-                           int(row[43])
-                           ]
-
-            x_list = [convert_ips(dec) for dec in list_of_dec]
-
-            [
-            row[7],             #create x_list and assign those values to
-            row[13],            #the working CSV file
-            row[21],
-            row[28],
-            row[35],
-            row[43]
-            ] = x_list
-
-            final_copy(row)
-
-
 def convert_ips(signed32BitInt):
 
     if signed32BitInt == 0:
@@ -85,24 +54,45 @@ def convert_ips(signed32BitInt):
     return '.'.join([str(int(n,16)) for n in hexSwap])
 
 
-def final_copy(final_csv):
-
-    if not exists(sys.argv[2]):
-        with open(sys.argv[2], 'a', newline='') as csvFinal:
-            writer = csv.writer(csvFinal)
-            writer.writerow(csvHeader)
-            writer.writerow(final_csv)
-    else:
-        with open(sys.argv[2], 'a', newline='') as csvFinal:
-            writer = csv.writer(csvFinal)
-            writer.writerow(final_csv)
-
-
 if __name__ == '__main__':
 
     with open(sys.argv[1], 'rt', newline='') as csvfile:    #open raw csv.
         reader = csv.reader(csvfile, delimiter=',')
         csvHeader = next(reader)
-        unfilterdcsv = list(reader)
+        working_csv = list(reader)
 
-        conversion(unfilterdcsv)
+        for row in working_csv:
+            if row[30] == sys.argv[3]:  #Search for user provided called number.
+
+                row[4] = datetime.datetime.utcfromtimestamp(  #Timestamp Convert
+                    int(row[4])).strftime('%Y-%m-%d %H:%M:%S')
+
+                list_of_dec = [                  #Submit the csv columns which
+                               int(row[7]),      #contain IPs needing converted
+                               int(row[13]),
+                               int(row[21]),
+                               int(row[28]),
+                               int(row[35]),
+                               int(row[43])
+                               ]
+
+                x_list = [convert_ips(dec) for dec in list_of_dec]
+
+                [
+                row[7],             #create x_list and assign those values to
+                row[13],            #the working CSV file
+                row[21],
+                row[28],
+                row[35],
+                row[43]
+                ] = x_list
+
+                if not exists(sys.argv[2]):
+                    with open(sys.argv[2], 'a', newline='') as csvFinal:
+                        writer = csv.writer(csvFinal)
+                        writer.writerow(csvHeader)
+                        writer.writerow(row)
+                else:
+                    with open(sys.argv[2], 'a', newline='') as csvFinal:
+                        writer = csv.writer(csvFinal)
+                        writer.writerow(row)
