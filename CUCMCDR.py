@@ -59,8 +59,8 @@ if __name__ == '__main__':
     with open(sys.argv[1], 'rt', newline='') as csvfile:    #open raw csv.
         reader = csv.reader(csvfile, delimiter=',')
         csvHeader = next(reader)
-        working_csv = list(reader)
-
+        working_csv = list(reader) #Generate row by row the working file
+                                   #To parse.
         for row in working_csv:
             if row[30] == sys.argv[3]:  #Search for user provided called number.
 
@@ -89,10 +89,10 @@ if __name__ == '__main__':
 
                 if not exists(sys.argv[2]):
                     with open(sys.argv[2], 'a', newline='') as csvFinal:
-                        writer = csv.writer(csvFinal)
-                        writer.writerow(csvHeader)
-                        writer.writerow(row)
-                else:
+                        writer = csv.writer(csvFinal) #If file exists
+                        writer.writerow(csvHeader) #print header
+                        writer.writerow(row) # then the row, otherwise,
+                else:                        # Just print the row to append.
                     with open(sys.argv[2], 'a', newline='') as csvFinal:
                         writer = csv.writer(csvFinal)
                         writer.writerow(row)
