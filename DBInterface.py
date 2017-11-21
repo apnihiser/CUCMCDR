@@ -2,6 +2,16 @@ import os
 import sqlite3
 import csv
 
+"""
+CUCMCDR.py
+Author: A.Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMCDR
+
+Purpose: Interface that connects a folder that is always being fed CDR, CMR data from CUCM.
+I amd running from an IIS server that will run this script to run at the top of every
+hour via scheduled tasks. This ia place hold doc until I can figure out the web
+front end that will serve as the GUI for this project. There we can pick times and dates
+well as calling and called numbers.
+"""
 
 def main():
 
