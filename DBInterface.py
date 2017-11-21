@@ -3,14 +3,22 @@ import sqlite3
 import csv
 
 """
-CUCMCDR.py
+DBInterface.py
 Author: A.Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMCDR
 
 Purpose: Interface that connects a folder that is always being fed CDR, CMR data from CUCM.
-I amd running from an IIS server that will run this script to run at the top of every
+I am running from an IIS server that will run this script to run at the top of every
 hour via scheduled tasks. This ia place hold doc until I can figure out the web
 front end that will serve as the GUI for this project. There we can pick times and dates
 well as calling and called numbers.
+
+Issues: I would like to point out that CUCM spits out CDR and CMR information in 129 or 44
+columns at a time. This is why these sql creation and insertion commands are so massive. I'll
+continue to research on what I can do about this. I have tried other methods to accomplish this
+but due to sql inject and my nubbyness things have not worked according to plan. For now I'll
+continue to tinker around to get a product up that can actually pull information from the web
+GUI and display a file for downloading. Until then this will all be a bit of mess!! My
+apologies.
 """
 
 def main():
