@@ -20,7 +20,7 @@ All UNIX datestamps have been converted to a new easily readable format, and IPs
 are automatically converted as well.
 
 lastly all data is pulled and deleted from the chosen directory, in this case I am 
-using C:\dev\CUCM\IVC_CDR\CDR_Working_DIR. Once again this path may need to be changed
+using C:\CDR_Working_DIR. Once again this path may need to be changed
 depending on where your records are located.
 
 As of now we can view all CDR & CMR data by using SQLite3 databrowswer. Much more planned
@@ -37,17 +37,15 @@ def main():
     conn = sqlite3.connect('car.db')
     c = conn.cursor()
 
-
     create_table_cmr(c)
     create_table_cdr(c)
 
-    path = 'C:\dev\CUCM\IVC_CDR\CDR_Working_DIR'
-
+    path = 'C:\CDR_Working_DIR'
     dirs = os.listdir( path )
 
     for files in dirs:
 
-        path = "C:\dev\CUCM\IVC_CDR\CDR_Working_DIR\{}".format(files)
+        path = "C:\CDR_Working_DIR\{}".format(files)
 
         with open(path, 'rt', newline='') as f:
 
