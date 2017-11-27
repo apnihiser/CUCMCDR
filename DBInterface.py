@@ -10,7 +10,8 @@ Author: A.Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMC
 
 Purpose: This entire script has been copy pasted into the new and improved CUCMCAR
 script. In a nutshell the script creates the required CDR & CMR databases automatically
-by pulling from a few text documents. These docs and the path to them may need to be 
+by pulling from 2 text documents. 2 other txt docs allow the data transfer to occure
+between DB and the CMR & CDR records. These docs and the path to them may need to be 
 modified to fit in your environment depending on where your CMR, CDR documents are 
 being downloaded to, and version of Call Manager. I am running 10.5.2.12901-1.
 
