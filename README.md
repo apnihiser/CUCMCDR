@@ -27,9 +27,12 @@ Installation:
                                   # if I am forgetting anything please let me know
   4) As far as how you are serving your website is up to you. I have been running this in a dev environment using flask. If you would like to do the same you can go ahead and run "run.py" to browse to the page http://localhost:5000/.
   5) This will bring you to the homepage. From this point you will notice that there is no database to search and no real functionality to the website. Let's fix that.
-  6) To create the database run db_create.py. I would recommend reading the database section from miguiel grinberg's blow entry below it goes step by step on the logic.
-
-      
-
+  6) To create the database run db_create.py. I would recommend reading the database section from miguiel grinberg's blog entry below it goes step by step on the logic. If you ever need to upgrade & migrate to a new structure all the necessary information is presented below.
+  7) I am currently working to integrate my existing DBinterface.py script into this project currently you will need to test off that DB.
+  8) I am assuming you have a directory that your CUCM CAR process is dumping files into.
+  9) Edit DBinterface.py to point to whichever directory those files reside in.
+ 10) Run DBinterface.py and it will process and delete those files (save copies if you want to create seperate DBs to test). DBinterface.py will delete any records older than 60days from the DB.
+ 11) Once the database is in place and the website is up and running make sure to place the db into the main certify_cdr directory, you should now be able to query those records by time stamp from http://localhost:5000/cdr.
+ 12) Yes there are probably bugs and it doesn't look pretty one of the many issues to hash out. I work on this daily so if there is anyone out there that wants more progress on this project please let me know and I'll upload to GITHUB.COM at a faster pace.
 
 Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
