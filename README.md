@@ -34,5 +34,7 @@ Installation:
  10) Run DBinterface.py and it will process and delete those files (save copies if you want to create seperate DBs to test). DBinterface.py will delete any records older than 60days from the DB.
  11) Once the database is in place and the website is up and running make sure to place the db into the main certify_cdr directory, you should now be able to query those records by time stamp from http://localhost:5000/cdr.
  12) Yes there are probably bugs and it doesn't look pretty one of the many issues to hash out. I work on this daily so if there is anyone out there that wants more progress on this project please let me know and I'll upload to GITHUB.COM at a faster pace.
+ 
+ In The Future: LDAP integration with Active Directory, HTTPS, Secure Logins, Form Validation, Pretty GUI, Ironed out Logic, AJAX, and more that I'm not remember or too lazy to list out!!!
 
 Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
