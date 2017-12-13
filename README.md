@@ -1,17 +1,35 @@
-Author: A.Nihiser, apnihiser@gmail.com, Github: https://github.com/merkkie/CUCMCDR
-Purpose: This entire script has been copy pasted into the new and improved CUCMCAR
-script. In a nutshell the script creates the required CDR & CMR databases automatically
-by pulling from a few text documents. These docs and the path to them may need to be 
-modified to fit in your environment depending on where your CMR, CDR documents are 
-being downloaded to, and version of Call Manager. I am running 10.5.2.12901-1.
-There is a pruning process that drops records after 60 days.
-All UNIX datestamps have been converted to a new easily readable format, and IPs
-are automatically converted as well.
-lastly all data is pulled and deleted from the chosen directory, in this case I am 
-using C:\CDR_Working_DIR. Once again this path may need to be changed
-depending on where your records are located.
-As of now we can view all CDR & CMR data by using SQLite3 databrowswer. Much more planned
-Future: Creating a Flask front end to interact and display data currently researching the
-best path to bring this alive in a smart and effective manner. I'd like to provided data
-searching, analytics and quality reports that can be searched by individual calls, daily,
-weekly, monthly time increments.
+Author: A. Nihiser | apnihiser@gmail.com | https://github.com/merkkie/
+
+DISCLAIMER: This is still very rough and insecure, do not run in any production environments!!!
+
+VISION: To create a script that will allow reporting against a Cisco Call Manager version 10.5.2.12901-1 (tested against).
+
+Current Functionality: Updated the original script into a full blown application that includes the following modules.
+  1) SQLite3 Database
+  2) Flask Framework
+  3) Flask-SQLalchemy interaction between web GUI and database
+  4) Basic Forms to collect report paramenters.
+  5) Python general scripting to hold it all together.
+  
+Current Status: Full steam ahead. Have just completed the logic that allows the web GUI to both send and receive data from the database.
+Very limited reporting only based on Unix Time Stamps. I will combine the old CUCMCDR logic that converted CAR process data into human-readable reporting. 
+
+Any comments or questions about this project please reach out to me and I'll see what I can do to implement or answer any questions.
+
+Installation: 
+
+  1) I am assuming that if you are at this point you understand at least the basics of Python and how to install, work with pip and         import modules and install a VENV environment into your projects. If I can help please let me know, just understand I have only been working in python myself for about 4 months now so I will not have answers to all questions!
+  2) I have tried to strip any branding from this project so if you would like you can upload your 200x200 images to the base.html template and update HTML data to reflect your organization.
+  3) import the required modules: $ flask\Scripts\pip install flask
+                                  $ flask\Scripts\pip install flask-sqlalchemy
+                                  $ flask\Scripts\pip install sqlalchemy-migrate
+                                  $ flask\Scripts\pip install flask-wtf
+                                  # if I am forgetting anything please let me know
+  4) As far as how you are serving your website is up to you. I have been running this in a dev environment using flask. If you would like to do the same you can go ahead and run "run.py" to browse to the page http://localhost:5000/.
+  5) This will bring you to the homepage. From this point you will notice that there is no database to search and no real functionality to the website. Let's fix that.
+  6) To create the database run db_create.py. I would recommend reading the database section from miguiel grinberg's blow entry below it goes step by step on the logic.
+
+      
+
+
+Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
