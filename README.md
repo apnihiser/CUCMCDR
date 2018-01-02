@@ -19,7 +19,13 @@ Any comments or questions about this project please reach out to me and I'll see
 
 Installation: 
 
-1)
+1) Create your Database.
+    a) run create.py to create the DB.
+    b) migrate.py and update.py to make any changed to your database created from create.py
+    c) downgrade will do exactly what it says revert your last migration.
+    d) for more information on this please see https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+2) Config your config.py file.
+    a) You can change the name of the DB, Set your SECRET_KEY for CSRF security, change your login Hash and Salt Parameters.
 
 
 Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
