@@ -19,13 +19,26 @@ Any comments or questions about this project please reach out to me and I'll see
 
 Installation: 
 
-1) Create your Database.
-    a) run create.py to create the DB.
+1) Decide how your going to host your application. I'm going to try to provide instructions for hosting on both apache and IIS, so I'll get back to you on that. For the meantime if you need to get this up and going there are many instructions available for getting flask hosted in all sorts of places.
+
+1) Create your virtual Environment
+    a) 
+
+2) Install Modules, I installed the following:
+    a) Flask
+    b) flask-SQLalchemy
+    c) Flask-Migrate
+    d) flask-Security
+2) Create your Database.
+    a) run create.py to create the DB
     b) migrate.py and update.py to make any changed to your database created from create.py
-    c) downgrade will do exactly what it says revert your last migration.
+    c) downgrade will do exactly what it says revert your last migration
     d) for more information on this please see https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
-2) Config your config.py file.
-    a) You can change the name of the DB, Set your SECRET_KEY for CSRF security, change your login Hash and Salt Parameters.
+3) Config your config.py file.
+    a) You can change the name of the DB
+    b) Set your SECRET_KEY for CSRF security
+    c) Change your login Hash and Salt Parameters.
+4) 
 
 
 Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
