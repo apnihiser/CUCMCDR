@@ -42,17 +42,6 @@ To downgrade DB
 ---------------------------------------------
 run the downgrade.py file
 
-Further information on this:
-
-Let's say that for the next release of your app you have to introduce a change to your models, for example a new table
-needs to be added. Without migrations you would need to figure out how to change the schema of your database, both in
-your development machine and then again in your server, and this could be a lot of work.
-
-But with database migration support, after you modify the models in your application you generate a new migration
-script (flask db migrate), you probably review it to make sure the automatic generation did the right thing, and then
-apply the changes to your development database (flask db upgrade). You will add the migration script to source control
-and commit it.
-
 --------------------------------------------
 The import of CAR files from CUCM
 --------------------------------------------
