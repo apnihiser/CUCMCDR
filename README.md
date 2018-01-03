@@ -21,8 +21,7 @@ Installation:
 
 1) Decide how your going to host your application. I'm going to try to provide instructions for hosting on both apache and IIS, so I'll get back to you on that. For the meantime if you need to get this up and going there are many instructions available for getting flask hosted in all sorts of places.
 
-1) Create your virtual Environment
-    a) 
+1) Create a Virtual Environment if needed
 
 2) Install Modules, I installed the following:
     a) Flask
@@ -38,7 +37,9 @@ Installation:
     a) You can change the name of the DB
     b) Set your SECRET_KEY for CSRF security
     c) Change your login Hash and Salt Parameters.
-4) 
+4) Set your environmental variables for powershell $env:FLASK_APP = "certifycdr.py"
+5) Create your DB
+    a) After step 4 is complete run flask db init from the \CertifyCDR directory
 
 
 Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
