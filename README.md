@@ -28,18 +28,38 @@ Installation:
     b) flask-SQLalchemy
     c) Flask-Migrate
     d) flask-Security
-2) Create your Database.
-    a) run create.py to create the DB
-    b) migrate.py and update.py to make any changed to your database created from create.py
-    c) downgrade will do exactly what it says revert your last migration
-    d) for more information on this please see https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
 3) Config your config.py file.
     a) You can change the name of the DB
     b) Set your SECRET_KEY for CSRF security
     c) Change your login Hash and Salt Parameters.
-4) Set your environmental variables for powershell $env:FLASK_APP = "certifycdr.py"
-5) Create your DB
-    a) After step 4 is complete run flask db init from the \CertifyCDR directory
-
-
-Credits: I based much of the flask programming from both https://pythonprogramming.net/ and https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+4) Create your DB
+    a) Set your environmental variables for powershell $env:FLASK_APP = "certifycdr.py"
+    a) After the previous step is completed run flask db init from the \CertifyCDR directory
+    b) Run flask db migrate, with this complete you will be able to upgrade and downgrading using flask db migrate
+    c) Run flask db upgrade! You should have all your tables filled out now.
+    d) For more information on this topic see https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+5)  Create a user.
+    a) Locate and uncomment  the following in routes.py   
+          # Create a user to test with
+          #@app.before_first_request
+          #def create_user():
+          #    models.db.create_all()
+          #    user_datastore.create_user(name='', password='')
+          #    models.db.session.commit()
+    b) Create a name and username      
+    b) If you need to add the environmental variables from 4.a and enter the command 'run flask'.
+    c) Browse out to http://localhost:5000/login and login using the credents from step 5.b
+    d) Go back and delete or comment out the decorator and function from step 5.b or you will get errors.
+ 6) Import files into database
+    a) At this point you should have your Cisco call manager dumping car files into CertifyCDR/app/inserts
+    b) You can schedule car files to dump in real-time, hourly, or however you wish, so when we set up import.py keep this in mind.
+    c) Schedule your imports file to process files in a manner that makes sense to you. For instance if you wanted to 
+       create an hourly import you might do somthing like this:
+        1) CAR will dump files at xx:50 of the hour and schedule import.py to process at xx:59:99.
+        2) On windows I've found the following settings help on a 2012 server. 
+            a) Run whether user is logged on or not
+            b) Run with highest priviledges
+            c) Start a program, C:\Windows\System32\cmd.exe, add arguments cmd /c python C:\CertifyCDR\app\imports.py
+            d) Start in (optional): C:\CertifyCDR\app
+            e) One Time trigger to kick it out afterwards 1 hour indefinately.
+    
