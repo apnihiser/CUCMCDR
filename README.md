@@ -39,12 +39,12 @@ Installation:
     e) For more information on this topic see https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
   6)  Create a user.
   a) Locate and uncomment  the following in routes.py   
-      # Create a user to test with
-      #@app.before_first_request
-      #def create_user():
-      #    models.db.create_all()
-      #    user_datastore.create_user(name='', password='')
-      #    models.db.session.commit()
+      Create a user to test with
+      @app.before_first_request
+      def create_user():
+          models.db.create_all()
+          user_datastore.create_user(name='', password='')
+          models.db.session.commit()
   b) Create a name and username      
   c) If you need to add the environmental variables from 4.a and enter the command 'run flask'.
   d) Browse out to http://localhost:5000/login and login using the credents from step 5.b
