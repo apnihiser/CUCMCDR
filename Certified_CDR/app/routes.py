@@ -8,7 +8,7 @@ user_datastore = SQLAlchemyUserDatastore(models.db, models.User, models.Role)
 security = Security(app, user_datastore,login_form=forms.ExtendedLoginForm)
 
 # Create a user to test with
-@app.before_first_request
+#@app.before_first_request
 #def create_user():
 #    models.db.create_all()
 #    user_datastore.create_user(name='<name>', password='<password>')
