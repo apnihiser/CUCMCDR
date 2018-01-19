@@ -12,7 +12,7 @@ Current Functionality: Updated the original script into a full blown application
   5) Flask-Security
   6) Python general scripting to hold it all together.
 
-Current Status: Newest release is still rough but minimal and functional. Importing CDR and CMR data is now part of the project. Webpage is now functional with reporting features that include searching my called, calling numbers as well as date searches. There are now options to prune the column since you don't always want to search through all 122 columns of CDR data. Everthing appears to work great but things look sloppy and some of the hard decisions are going to need to be made now on exactly how to deal with so much data on the out page.
+Current Status: On Hold for now. I think I have accomplished all I have set out to do. HTML may not be the most solid ever but there is a much better results table now along with the ability to export your results to excel. I have created the homepage as well as a proper login page. I will be monitoring any comments and questions if they pop up. I trying to redouble my efforts into learning cleaner code and test based development so there will not be many noticible gains on this project until I go back over it with my knowledge but I am starting a new project that will help with catagorizing and taking inventory of UCCX audio prompts. I am hoping to have a script that goes through all the wav files and transcribes them into text. I think I have found the best library for this so please say in touch for more develpments. As I said please contact me for any assistance or questions into this project.
 
 Any comments or questions about this project please reach out to me and I'll see what I can do to implement or answer any questions.
 
