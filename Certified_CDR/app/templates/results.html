@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = "results-body">
+    <div class = 'Main-Result'>
+        <table id="projectSpreadsheet" class="fixed_headers" border="1px" cellspacing="0">
+            <! --table header-- !>
+            {% if results %}
+            <thead>
+            <tr class="Theader">
+                {% for key in results[0] %}
+                <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            {% endif %}
+
+            <! --table rows-- !>
+            {% for result in results %}
+            <tbody id="tbodyid">
+            <tr class="{{ loop.cycle('odd','even') }}">
+                {% for value in result.values() %}
+                {% if value != '' %}
+                <td>{{ value }}</td>
+                {% else %}
+                <td>-</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="excel-export">
+    <a href="/cdr" style="text-decoration:none;color:#000;background-color:#ddd;border:1px solid #ccc;padding:8px;">Request another CDR Search</a>
+    <a href="#" id="xx" style="text-decoration:none;color:#000;background-color:#ddd;border:1px solid #ccc;padding:8px;">Export Table data into Excel</a>
+    </div>
+</div>
+
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

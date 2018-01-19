@@ -1,0 +1,355 @@
+/*Global CSS for each Template*/
+* {margin: 0; padding: 0; box-sizing: border-box;}
+
+h1 {font-family: verdana; font-size: 40pt; color: #3B5CA9;}
+
+h2 {font-family: verdana; color: white;}
+
+h3 {font-style: italic;}
+
+h4 {font-style: italic;}
+
+h5 {font-family: verdana}
+
+a {color: white; font-weight: bold; text-decoration: none; font-family: verdana;}
+
+tr:hover {background-color: #fbe9e7;}
+
+.login-form {font-family: verdana; font-weight: bold; color: white;}
+
+.rep-p {font-family: verdana; font-weight: bold; color: #3B5CA9;font-size: 20pt;}
+
+.flashes {margin-bottom: 25px;font-family: verdana; font-weight: bold;font-size: 20pt;}
+
+
+/*base.html*/
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header-logo1 {
+    display: flex;
+}
+
+.Header-logo2 {
+    display: flex;
+	width: 150px;
+	width: 150px;
+}
+
+.Header-Wording {
+    display: flex;
+    margin-left: 50px;
+    width: auto;
+}
+
+.header-welcome {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+}
+
+.header-welcome-contents-1 {
+    height: auto;
+    min-height: 125px;
+}
+
+.header-welcome-contents-2 {
+    width: auto;
+    margin-right: 10px;
+
+}
+
+.link-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.index-greeting {
+    font-weight: bold;
+    text-decoration: none;
+    font-family: verdana;
+    color: #3B5CA9;
+}
+
+.link-border {
+    background-color: #f4511e;
+    display: flex;
+    height: 2px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.link-header {
+    background-color: #f4511e;
+    display: flex;
+    justify-content: flex-end;
+    width: 1300px;
+}
+
+.Links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.flash-message {
+    color: Red;
+}
+
+
+/*index.html*/
+.Index-Body {
+    display: flex;
+    justify-content: center;
+}
+
+.index-content {
+    margin-top: 25px;
+    min-height: 1080px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.index-1, .index-2, .index-3, .index-4, .index-5 {
+    height: auto;
+    width: auto;
+    display: flex;
+}
+
+.rep-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100px;
+	height: auto;
+}
+
+
+.index-cucm, .index-uc, .index-uccx, .index-fin-client, .index-fin-admin {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+	height: 99%;
+}
+
+
+/*login.html*/
+.login-body {
+    display: flex;
+    justify-content: center;
+    min-height: 1080px;
+}
+
+.login-content {
+    display: flex;
+	height: auto;
+	width: auto;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+
+}
+
+
+.login-elements {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+    flex-direction: column;
+    border: 3px #e8eaf6 solid;
+    border-radius: 25px;
+    height: auto;
+	max-height: 500px;
+    width: 750px;
+    margin-top: 100px;
+    background-color: #1E88E5;
+}
+
+.login-header {
+
+}
+
+.login-username {
+    margin-top: 25px;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.login-password {
+    display: flex;
+	margin-top: 5px;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.login-remember {
+    display: flex;
+	margin-top: 10px;
+}
+
+.login-submit {
+    display: flex;
+	margin-top: 10px;
+
+}
+
+
+/*cdr.html*/
+.cdr-body {
+    min-height: 1080px;
+    background-color: #e8eaf6;
+}
+
+.form-container {
+    margin-left: 5px;
+}
+
+.text-field-container {
+}
+
+.number-search {
+    display: flex;
+}
+
+.calling-number {
+    margin-right: 5px;
+}
+
+.called-number {
+}
+
+.date-search {
+    display: flex;
+}
+
+.from-date {
+    margin-right: 5px;
+}
+
+.to-date {
+}
+
+.hid-boolean-form-container {
+    display: none;
+}
+
+.vis-boolean-form-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.boolean-forms-simple {
+}
+
+.check-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.forms-simple-header {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+.boolean-forms-advanced {
+}
+
+.check-all {
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.forms-adv-header {
+}
+
+.Advanced-para {
+    margin-top: 5px;
+}
+
+.adv-1, .adv-2, .adv-3, .adv-4, .adv-5 {
+}
+
+.submit-form {
+    margin-top: 5px;
+}
+
+
+/*Results.html*/
+.results-body {
+    min-height: 1080px;
+    background-color: #e8eaf6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.Main-Result {
+    color: #fff;
+    background-color:  #ddd;  /* blue */
+    padding: 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 99%;
+    height: 100%;
+    overflow-x: auto;
+    margin-left: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.Theader {
+    background-color:  #1E88E5;  /* Blue */
+}
+
+.fixed_headers {
+    width: 100%;
+    height: 100%;
+}
+
+.odd {
+    color: #000000;
+    border: 1px solid white;
+    text-align: center;
+    background-color:  #BBDEFB;  /* Blue */
+}
+
+.even {
+    color: #000000;
+    border: 1px solid white;
+    text-align: center;
+    background-color:  #FFFFFF;  /* light blue */
+}
+
+
+.excel-export {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 5px 5px;
+    justify-content: space-around;
+}
+
+
+
+
+/*footer.html*/

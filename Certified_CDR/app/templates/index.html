@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = 'Index-Body'>
+
+    <div class="index-content">
+        <div class="index-1">
+			<div class="rep-1">
+				<a href="/cdr">
+				<img src="{{url_for('static', filename='images/curved-arrow2.svg')}}" />
+				</a>
+			</div>
+			<div class="rep-text">
+				<div class="rep-2">
+					<a href="/cdr">
+					<p class="rep-p">UC Administration</p>
+					</a>
+				</div>
+				<div class="rep-3">
+					<a href="/cdr">
+					<p class="rep-p">Jump straight into a CDR search</p>
+					</a>
+				</div>
+			</div>
+			<div class="rep-3">
+				<a href="/cdr">
+				<img src="{{url_for('static', filename='images/curved-arrow1.svg')}}" />
+				</a>
+			</div>			
+		
+		</div>
+        <div class="index-2">
+            <div class="index-cucm">
+				<a href="https://ely-cucm-sub001">
+				<img src="{{url_for('static', filename='images/CUCM.svg')}}" />
+				</a>
+			</div>
+            <div class="index-uc">
+				<a href="https://ely-uc-sub01">
+				<img src="{{url_for('static', filename='images/UC.svg')}}" />
+				</a>
+			</div>
+            <div class="index-uccx">
+				<a href="https://ely-uccx-sub01">
+				<img src="{{url_for('static', filename='images/UCCX.svg')}}" />
+				</a>
+			</div>
+            <div class="index-fin-client">
+				<a href="https://ely-uccx-pub01.na.ivc:8445/desktop/container/">
+				<img src="{{url_for('static', filename='images/FINESSE.svg')}}" />
+				</a>
+			</div>
+            <div class="index-fin-admin">
+				<a href="https://10.2.1.17:8445/cfadmin/container/?locale=en_US">
+				<img src="{{url_for('static', filename='images/FINESSA.svg')}}" />
+				</a>
+			</div>
+        </div>
+        <div class="index-3">
+			<a href="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/service/11_0_1/cdrdef/CUCM_BK_RFDE0054_00_cucm-cdr-administration-guide-1101/cisco_call_detail_records_field_descriptions.html">
+			<img src="{{url_for('static', filename='images/whatcdrbanner.svg')}}" />
+			</a>
+        </div>
+        <div class="index-4">
+
+        </div>
+        <div class="index-5">
+
+        </div>
+    </div>
+
+
+</div>
+
+{% include 'footer.html' %}
+
+{% endblock %}
+
+

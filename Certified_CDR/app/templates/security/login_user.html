@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-body">
+  <div class="login-content">
+
+    <div class="login-elements">
+      {% from "security/_macros.html" import render_field_with_errors, render_field %}
+      {% include "security/_messages.html" %}
+      <div class="login-header">
+        <h2>{{ _('Login') }}</h2>
+      </div>
+      <form class="login-form" action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+        {{ login_user_form.hidden_tag() }}
+      <div class="login-username">
+          {{ render_field_with_errors(login_user_form.email) }}
+      </div>
+      <div class="login-password">
+          {{ render_field_with_errors(login_user_form.password) }}
+      </div>
+      <div class="login-remember">
+          {{ render_field_with_errors(login_user_form.remember) }}
+      </div>
+      <div class="login-submit">
+          {{ render_field(login_user_form.next) }}
+          {{ render_field(login_user_form.submit) }}
+      </div>
+      </form>
+      {% include "security/_menu.html" %}
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+      <meta charset='UTF-8'/>
+      <title>{{ title }}</title>
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='stylesheets/style.css') }}" >
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.jpg') }}">
+      <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery-3.2.1.min.js') }}"></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+
+            function exportTableToCSV($table, filename) {
+
+                var $rows = $table.find('tr:has(td),tr:has(th)'),
+
+                    // Temporary delimiter characters unlikely to be typed by keyboard
+                    // This is to avoid accidentally splitting the actual contents
+                    tmpColDelim = String.fromCharCode(11), // vertical tab character
+                    tmpRowDelim = String.fromCharCode(0), // null character
+
+                    // actual delimiter characters for CSV format
+                    colDelim = '","',
+                    rowDelim = '"\r\n"',
+
+                    // Grab text from table into CSV formatted string
+                    csv = '"' + $rows.map(function (i, row) {
+                        var $row = $(row), $cols = $row.find('td,th');
+
+                        return $cols.map(function (j, col) {
+                            var $col = $(col), text = $col.text();
+
+                            return text.replace(/"/g, '""'); // escape double quotes
+
+                        }).get().join(tmpColDelim);
+
+                    }).get().join(tmpRowDelim)
+                        .split(tmpRowDelim).join(rowDelim)
+                        .split(tmpColDelim).join(colDelim) + '"',
+
+
+
+                    // Data URI
+                    csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+                    console.log(csv);
+
+                    if (window.navigator.msSaveBlob) { // IE 10+
+                        //alert('IE' + csv);
+                        window.navigator.msSaveOrOpenBlob(new Blob([csv], {type: "text/plain;charset=utf-8;"}), "csvname.csv")
+                    }
+                    else {
+                        $(this).attr({ 'download': filename, 'href': csvData, 'target': '_blank' });
+                    }
+            }
+
+            // This must be a hyperlink
+            $("#xx").on('click', function (event) {
+
+                exportTableToCSV.apply(this, [$('#projectSpreadsheet'), 'export.csv']);
+
+                // IF CSV, don't do event.preventDefault() or return false
+                // We actually need this to be a typical hyperlink
+            });
+
+        });
+      </script>
+  </head>
+  <body>
+    <div class = 'Header'>
+        <div class = 'Header-logo1'>
+            <img src="{{url_for('static', filename='images/logo-logo-company.png')}}" />
+		</div>
+		<div class = 'Header-logo2'>
+            <img src="{{url_for('static', filename='images/cisco-logo.gif')}}" />
+        </div>
+        <div class = 'Link-Wording-Container'>
+            <div class = 'Header-Wording'>
+                <h1>COMPANY&nbsp;UNIFIED&nbsp;COMMUNICATIONS</h1>
+            </div>
+        </div>
+        <div class = 'header-welcome'>
+            <div class = 'header-welcome-contents-1'>
+            </div>
+            <div class = 'header-welcome-contents-2'>
+                {% if user_name %}
+                    <p class="index-greeting">Welcome,&nbsp;{{ user_name }}</p>
+                {% else %}
+                    <p class="index-greeting">Welcome, Guest</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="link-container">
+        <div class="link-border"></div>
+        <div class="link-header">
+            <div class = 'Links'>
+                <a href="/index">HOME</a>
+                <a href="/cdr">CALL REPORTS</a>
+                <a href="http://wallboard/">WALLBOARD</a>				
+                <a href="/login">LOGIN</a>
+                <a href="/logout">LOGOUT</a>
+            </div>
+        </div>
+    </div>
+    <div class = 'Body'>
+        <div class = "flash-container" style="min-height:100% width:80%">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash-message">
+                  <h2>{{message}}</h2>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        </div>
+    {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
